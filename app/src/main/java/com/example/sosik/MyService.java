@@ -1,25 +1,18 @@
 package com.example.sosik;
 
-import android.app.ActivityManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.os.Vibrator;
-import android.view.FocusFinder;
-import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
-
-import java.util.List;
 
 public class MyService extends Service implements SensorEventListener {
 
@@ -41,7 +34,7 @@ public class MyService extends Service implements SensorEventListener {
 
     private static final int SHAKE_THRESHOLD = 800;   //스피드
     private static final int SHAKE_DURATION = 1000;   //기간
-    private static final int SHAKE_Time = 2;           //횟수
+    private static final int SHAKE_TIME = 2;           //횟수
     private static final int DATA_X = SensorManager.DATA_X;
     private static final int DATA_Y = SensorManager.DATA_Y;
     private static final int DATA_Z = SensorManager.DATA_Z;
@@ -91,7 +84,7 @@ public class MyService extends Service implements SensorEventListener {
                     long gabOfShake = currentTime - lastShake;
                     if (gabOfShake < SHAKE_DURATION ){
                         lastShake = currentTime;
-                        if (shakeCount >= SHAKE_Time){
+                        if (shakeCount >= SHAKE_TIME){
                             shakeCount = 0;
                             showIntent();
                         }
@@ -124,9 +117,8 @@ public class MyService extends Service implements SensorEventListener {
                 NOTIF_CHANNEL_ID) // don't forget create a notification channel first
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_noticon)
-                .setColor(0xFF6E57)
                 .setContentTitle(getString(R.string.app_name))
-                .setContentText("Service is running background")
+                .setContentText("2~3회 흔들면 앱이 실행됩니다.")
                 .setContentIntent(pendingIntent)
                 .build());
     }
