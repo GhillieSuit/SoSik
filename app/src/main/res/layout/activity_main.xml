@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_margin="15dp">
+    android:background="@color/colorAccent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler1"
@@ -16,7 +16,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtSTT"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorTextBackground"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorTextBackground"
+        android:padding="5dp">
 
         <EditText
             android:id="@+id/txtTTS"

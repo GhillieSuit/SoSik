@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">소식</string>
     <string name="channel_name">소식</string>
+    <string name="load_file">Load file</string>
+    <string name="permission_message">이 앱은 음성 녹음 권한이 필요합니다.</string>
+    <string name="listening">Listening…</string>
 </resources>

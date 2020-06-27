@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dip"
-    android:clickable="true">
+    android:layout_margin="5dp">
 
     <TextView
+        android:textSize="10pt"
+        android:textColor="@color/colorTextBackground"
+        android:layout_gravity="left"
+        android:id="@+id/text1"
+        android:background="@drawable/textveiw2_background"
+        android:padding="8dp"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text1"
-        android:layout_gravity="left"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="10pt"
+            android:layout_gravity="right"
+            android:id="@+id/text2"
+            android:background="@drawable/textveiw1_background"
+            android:padding="8dp"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"/>
+    </LinearLayout>
 </LinearLayout>

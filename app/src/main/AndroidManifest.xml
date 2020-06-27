@@ -3,6 +3,8 @@
     package="com.example.sosik">
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_main"
@@ -21,6 +23,7 @@
             android:enabled="true"
             android:exported="true">
         </service>
+        <service android:name=".SpeechService"/>
     </application>
 
 </manifest>
