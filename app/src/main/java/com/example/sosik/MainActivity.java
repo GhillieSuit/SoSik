@@ -18,8 +18,6 @@ import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -150,17 +148,17 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btnTTS:
+                stopVoiceRecorder();
                 String text;
                 text = txtTTS.getText().toString();
+                resumeVoiceRecorder();
                 if (text.length() == 0) {
                     return;
-                }else{
+                }else {
                     txtTTS.setText("");
-                    tts.speak(text,TextToSpeech.QUEUE_FLUSH, null);
+                    tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                     mAdapter.addResult("2" + text);
                     mRecyclerView.smoothScrollToPosition(mAdapter.getItemCount() - 1);
-                    //mRecyclerView.getLayoutManager().onRestoreInstanceState(mRecyclerView.getLayoutManager().onSaveInstanceState());
-                    //mRecyclerView.scrollToPosition(mRecyclerView.getLayoutManager().getItemCount()-1);
                 }
         }
     }
@@ -201,7 +199,8 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
     @Override
     protected void onStop() {
         // Stop listening to voice
-        stopVoiceRecorder();
+        //stopVoiceRecorder();
+        exitVoiceRecorder();
 
         // Stop Cloud Speech API
         mSpeechService.removeListener(mSpeechServiceListener);
@@ -254,7 +253,19 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
         mVoiceRecorder.start();
     }
 
+    private void resumeVoiceRecorder(){
+        mVoiceRecorder.start();
+    }
+
     private void stopVoiceRecorder() {
+        mVoiceRecorder.stop();
+        /*if (mVoiceRecorder != null) {
+            mVoiceRecorder.stop();
+            mVoiceRecorder = null;
+        }*/
+    }
+
+    private void exitVoiceRecorder(){
         if (mVoiceRecorder != null) {
             mVoiceRecorder.stop();
             mVoiceRecorder = null;
